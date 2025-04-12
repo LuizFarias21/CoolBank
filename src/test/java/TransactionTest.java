@@ -5,7 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TransactionTest {
 
-    Transaction transaction = new Transaction(5);
+    double expectedAmount = 5;
+    Transaction transaction = new Transaction(expectedAmount);
 
     @Test
     public void transactionTest() {
@@ -14,7 +15,6 @@ public class TransactionTest {
 
     @Test
     public void transactionAmountTest() {
-        double expectedAmount = 5;
         assertEquals(expectedAmount, transaction.getAmount());
     }
 
