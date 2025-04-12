@@ -1,7 +1,6 @@
 package org.example;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Account {
 
@@ -10,7 +9,7 @@ public class Account {
     public static final int MAXI_SAVINGS = 2;
 
     private final int accountType;
-    private final List<Transaction> transactions;
+    private final ArrayList<Transaction> transactions;
 
     public Account(int accountType) {
         this.accountType = accountType;
@@ -41,5 +40,9 @@ public class Account {
 
     public int getAccountType() {
         return accountType;
+    }
+
+    public ArrayList<Transaction> getTransactions() {
+        return transactions;
     }
 }

@@ -7,7 +7,7 @@ import static java.lang.Math.abs;
 public class Customer {
 
     private final String name;
-    private ArrayList<Account> accounts;
+    private final ArrayList<Account> accounts;
 
     public Customer(String name) {
         this.name = name;
@@ -18,9 +18,8 @@ public class Customer {
         return name;
     }
 
-    public Customer openAccount(Account account) {
+    public void openAccount(Account account) {
         accounts.add(account);
-        return this;
     }
 
     public int getNumberOfAccounts() {
