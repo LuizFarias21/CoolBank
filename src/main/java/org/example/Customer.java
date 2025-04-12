@@ -1,8 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
-
-import static java.lang.Math.abs;
+import static org.example.Bank.toDollars;
 
 public class Customer {
 
@@ -26,6 +25,12 @@ public class Customer {
         return accounts.size();
     }
 
+    public double totalInterestEarned() {
+        double total = 0;
+        for (Account account : accounts) total += account.interestEarned();
+        return total;
+    }
+
     public String statementForAccount(Account account) {
         String s = "";
 
@@ -43,7 +48,7 @@ public class Customer {
         }
 
         for (Transaction t : account.getTransactions()) {
-            s += " " + (t.getAmount() < 0 ? "withdraw" : "deposit") + " " + toDollars(t.getAmount()) + "\n";
+            s += "  " + (t.getAmount() < 0 ? "withdraw" : "deposit") + " " + toDollars(t.getAmount()) + "\n";
         }
 
         s += "Total " + toDollars(account.sumTransactions());
@@ -67,7 +72,4 @@ public class Customer {
         return accounts;
     }
 
-    private String toDollars(double d) {
-        return String.format("$%,.2f", abs(d));
-    }
 }
