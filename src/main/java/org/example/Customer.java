@@ -26,6 +26,43 @@ public class Customer {
         return accounts.size();
     }
 
+    public String statementForAccount(Account account) {
+        String s = "";
+
+        switch (account.getAccountType()) {
+
+            case Account.CHECKING:
+                s += "Checking Account\n";
+                break;
+            case Account.SAVINGS:
+                s += "Savings Account\n";
+                break;
+            case Account.MAXI_SAVINGS:
+                s += "Maxi Savings Account\n";
+                break;
+        }
+
+        for (Transaction t : account.getTransactions()) {
+            s += " " + (t.getAmount() < 0 ? "withdraw" : "deposit") + " " + toDollars(t.getAmount()) + "\n";
+        }
+
+        s += "Total " + toDollars(account.sumTransactions());
+        return s;
+    }
+
+    public String getStatement() {
+        String statement = "Statement for " + name + "\n";
+        double total = 0;
+
+        for (Account account : accounts) {
+            statement += "\n" + statementForAccount(account) + "\n";
+            total += account.sumTransactions();
+        }
+
+        statement += "\nTotal in all accounts " + toDollars(total);
+        return statement;
+    }
+
     public ArrayList<Account> getAccounts() {
         return accounts;
     }
