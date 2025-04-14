@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import static java.lang.Math.abs;
 
@@ -34,7 +35,7 @@ public class Bank {
     }
 
     public static String toDollars(double value) {
-        return String.format("$%,.2f", abs(value));
+        return String.format(Locale.US, "$%,.2f", abs(value));
     }
 
 }
